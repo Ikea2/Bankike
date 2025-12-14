@@ -25,6 +25,7 @@ struct Usuario_str {  //usuario que introduces en la interfaz
 
 
 void pedirDatosUsuario();
+void menuUsuario();
 
 
 extern Usuario_Real UsuariosR[6];

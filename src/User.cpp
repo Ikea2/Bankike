@@ -73,3 +73,313 @@ void pedirDatosUsuario() {
         SetConsoleTextAttribute(h, 7);
     }
 }
+
+void menuUsuario() {
+	SetConsoleTextAttribute(h, 10);
+	cout << endl << "DATOS DE INICIO DE SESION CORRECTOS" << endl;
+
+	if (admin == true) {
+		do {
+			SetConsoleTextAttribute(h, 13);
+			cout << "\nMENU DE ADMIN: ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "\nDigite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "1 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ver el saldo actual" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "2 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ver los ultimos movimientos" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "3 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ingresar dinero" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "4 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para extraer dinero" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "5 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para cerrar sesion" << endl;
+			cin >> accion;
+			switch (accion) {
+			case 1: cout << "\nDigite el nombre del usuario del cual desea acceder a su saldo: ";
+				cin >> Usuario.UserName;
+				for (int i = 0; i < 6; i++) {
+					if (Usuario.UserName == UsuariosR[i].UserNameR) {
+						vAdmin = true;
+						AdminUser = i;
+					}
+				}
+				if (vAdmin == true) {
+					cout << "Saldo de ";
+					SetConsoleTextAttribute(h, 2);
+					cout << UsuariosR[AdminUser].UserNameR << ": ";
+					SetConsoleTextAttribute(h, 7);
+					cout << endl << UsuariosR[AdminUser].UserData.saldo;
+				}
+				else {
+					SetConsoleTextAttribute(h, 4);
+					cout << "\nNOMBRE DE USUARIO NO ENCONTRADO";
+					SetConsoleTextAttribute(h, 7);
+				}
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				} break;
+			case 2: cout << "\nDigite el nombre del usuario del cual desea acceder a su ultimo movimineto: ";
+				cin >> Usuario.UserName;
+				for (int i = 0; i < 6; i++) {
+					if (Usuario.UserName == UsuariosR[i].UserNameR) {
+						vAdmin = true;
+						AdminUser = i;
+					}
+				}
+				if (vAdmin == true) {
+					cout << "Ultimo movimiento de ";
+					SetConsoleTextAttribute(h, 2);
+					cout << UsuariosR[AdminUser].UserNameR << ": ";
+					SetConsoleTextAttribute(h, 7);
+					cout << endl << UsuariosR[AdminUser].UserData.Ult_Mov;
+				}
+				else {
+					SetConsoleTextAttribute(h, 4);
+					cout << "\nNOMBRE DE USUARIO NO ENCONTRADO";
+					SetConsoleTextAttribute(h, 7);
+				}
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				} break;
+			case 3: cout << "\nDigite el nombre del usuario al cual desea ingresar dinero: ";
+				cin >> Usuario.UserName;
+				for (int i = 0; i < 6; i++) {
+					if (Usuario.UserName == UsuariosR[i].UserNameR) {
+						vAdmin = true;
+						AdminUser = i;
+					}
+				}
+				if (vAdmin == true) {
+					cout << "\nDigite la cantidad a ingresar: ";
+					cin >> ingreso;
+					UsuariosR[AdminUser].UserData.saldo += ingreso;
+					cout << "Saldo de ";
+					SetConsoleTextAttribute(h, 2);
+					cout << UsuariosR[AdminUser].UserNameR << ": ";
+					SetConsoleTextAttribute(h, 7);
+					cout << endl << UsuariosR[AdminUser].UserData.saldo;
+				}
+				else {
+					SetConsoleTextAttribute(h, 4);
+					cout << "\nNOMBRE DE USUARIO NO ENCONTRADO";
+					SetConsoleTextAttribute(h, 7);
+				}
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				} break;
+			case 4: cout << "\nDigite el nombre del usuario al cual desea retirar dinero: ";
+				cin >> Usuario.UserName;
+				for (int i = 0; i < 6; i++) {
+					if (Usuario.UserName == UsuariosR[i].UserNameR) {
+						vAdmin = true;
+						AdminUser = i;
+					}
+				}
+				if (vAdmin == true) {
+					cout << "\nDigite la cantidad a retirar: ";
+					cin >> ingreso;
+					UsuariosR[AdminUser].UserData.saldo -= ingreso;
+					cout << "Saldo de ";
+					SetConsoleTextAttribute(h, 2);
+					cout << UsuariosR[AdminUser].UserNameR << ": ";
+					SetConsoleTextAttribute(h, 7);
+					cout << endl << UsuariosR[AdminUser].UserData.saldo;
+				}
+				else {
+					SetConsoleTextAttribute(h, 4);
+					cout << "\nNOMBRE DE USUARIO NO ENCONTRADO";
+					SetConsoleTextAttribute(h, 7);
+				}
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				} break;
+
+			case 5: close = true;
+				break;
+			}
+		} while (close == false);
+	}
+	else {
+		do {
+			SetConsoleTextAttribute(h, 13);
+			cout << "\nMENU: ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "\nDigite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "1 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ver el saldo actual" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "2 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ver los ultimos movimientos" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "3 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para ingresar dinero" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "4 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para extraer dinero" << endl;
+			cout << "Digite ";
+			SetConsoleTextAttribute(h, 2);
+			cout << "5 ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "para cerrar sesion" << endl;
+			cin >> accion;
+
+
+			switch (accion) {
+			case 1: SetConsoleTextAttribute(h, 6);
+				cout << endl << "SALDO:" << endl;
+				SetConsoleTextAttribute(h, 7);
+				cout << UsuariosR[n_user].UserData.saldo << endl;
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				} break;
+			case 2: SetConsoleTextAttribute(h, 6);
+				cout << endl << "ULTIMO MOVIMIENTO:" << endl;
+				SetConsoleTextAttribute(h, 7);
+				cout << UsuariosR[n_user].UserData.Ult_Mov << endl;
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				}break;
+			case 3: cout << "\nDigite la cantidad a ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "ingresar: ";
+				SetConsoleTextAttribute(h, 7);
+				cin >> ingreso;
+				UsuariosR[n_user].UserData.saldo += ingreso;
+				UsuariosR[n_user].UserData.Ult_Mov = ingreso;
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				}break;
+
+			case 4: cout << "\nDigite la cantidad a ";
+				SetConsoleTextAttribute(h, 4);
+				cout << "retirar: ";
+				SetConsoleTextAttribute(h, 7);
+				cin >> ingreso;
+				UsuariosR[n_user].UserData.saldo -= ingreso;
+				UsuariosR[n_user].UserData.Ult_Mov = ingreso * (-1);
+				cout << "\nDigite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "1 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para volver al menu" << endl;
+				cout << "Digite ";
+				SetConsoleTextAttribute(h, 2);
+				cout << "2 ";
+				SetConsoleTextAttribute(h, 7);
+				cout << "para cerrar sesion" << endl;
+				cin >> accion;
+				if (accion == 2) {
+					close = true;
+				}break;
+
+			case 5: close = true;
+				break;
+			}
+		} while (close == false);
+	}
+
+
+	SetConsoleTextAttribute(h, 10);
+	cout << endl << "\nSESION CERRADA CORRECTAMENTE" << endl << endl;
+	SetConsoleTextAttribute(h, 7);
+}
